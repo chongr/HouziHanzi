@@ -1,0 +1,571 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+ html, body, header, nav, h1, a,
+ ul, li, strong, main, button, i,
+ section, img, div, h2, p, form,
+ fieldset, label, input, textarea,
+ span, article, footer, time, small {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font: inherit;
+   color: inherit;
+   text-align: inherit;
+   text-decoration: inherit;
+   vertical-align: inherit;
+   box-sizing: inherit;
+   background: transparent;
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ img {
+   display: block;
+   width: 100%;
+   height: auto;
+ }
+
+ input[type="password"],
+ input[type="email"],
+ input[type="text"],
+ input[type="submit"],
+ textarea,
+ button {
+   /*
+   Get rid of native styling. Read more here:
+   http://css-tricks.com/almanac/properties/a/appearance/
+   */
+   -webkit-appearance: none;
+   -moz-appearance: none;
+ }
+
+ button,
+ input[type="submit"] {
+   cursor: pointer;
+ }
+
+ /* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGD_j0nMiB9fPhg_k1wdK2h0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGDRVvBvQIc1z78c__uoBcyI.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.lesson {
+  position: relative;
+  letter-spacing: -.31em;
+  display: block;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.lesson-container {
+  width: 100%;
+  display: block;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.lesson header {
+  display: block;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.main-info {
+  background-color: #00a1f1;
+  background-image: linear-gradient(to bottom, #0af, #0093dd);
+  background-repeat: repeat-x;
+}
+
+.character {
+  text-shadow: 5px 5px 0 #0093dd;
+  padding: 20px 20px 0;
+  font-size: 11em;
+  line-height: 1.2em;
+  font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+  display: block;
+  color: #fff;
+  text-align: center;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.translation {
+  text-shadow: 3px 3px 0 #0093dd;
+  padding: 0 20px 20px;
+  font-size: 5em;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  display: block;
+  color: #fff;
+  text-align: center;
+  zoom: 1;
+  word-spacing: normal;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.supplement {
+  display: block;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.supplement-nav {
+  padding: 20px;
+  background-color: #252A3A;
+  font-weight: 300;
+  display: block;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.supplement-options {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 3em;
+}
+
+.supplement-info {
+  position: relative;
+  margin: 10px 10px 20px;
+  padding: 40px 3.5em;
+  background-color: #fff;
+  box-shadow: 3px 3px 0 #e1e1e1;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.arrowbutton {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  padding: 2em 1em 1em;
+  height: 100%;
+  color: #a2a2a2;
+  box-sizing: border-box;
+  transition: background-color 0.15s linear;
+  display: block;
+  font-family: FontAwesome;
+}
+
+.arrowbutton:hover {
+  background-color: #ECECE9;
+}
+
+.next {
+  right: 0;
+}
+
+.next::before {
+  content: "\F054";
+}
+
+.back {
+  left: 0;
+}
+
+.back::before {
+  content: "\F053";
+}
+
+.lesson h2 {
+  font-size: 2.3em;
+  border-bottom: 1px solid #ECECE9
+}
+
+.response-box {
+  padding: 20px;
+  background-color: #fff;
+  font-weight: 300;
+  display: block;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-size: 0.8em;
+  font-family: "Source Sans Pro",sans-serif;
+  background-color: #252A3A;
+}
+
+.response-field {
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
+  box-shadow: 3px 3px 0 #e1e1e1;
+  width: 100%;
+  height: 3em;
+  font-size: 3em;
+  font-family: "Source Sans Pro",sans-serif;
+}
+
+.pinyin {
+  font-size: 2.0em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.other-meanings {
+  font-size: 2.0em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.character-list {
+  margin: 10px;
+  display: block;
+}
+
+.character-list-container {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.quiz-button-group {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  width: 100%;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quiz-button {
+    color: rgb(55, 58, 60);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 38px;
+    min-height: 0px;
+    touch-action: manipulation;
+    white-space: nowrap;
+    perspective-origin: 30.625px 19px;
+    transform-origin: 30.625px 19px;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px 0 0 4px;
+    font: normal normal normal normal 16px / 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    outline: rgb(55, 58, 60) none 0px;
+    padding: 6px 17em;
+  }
+
+.quiz-button:hover {
+  background-color: #ECECE9;
+}
+
+.dropdown-click {
+  background-color: #00a1f1;
+  background-image: linear-gradient(to bottom, #0af, #0093dd);
+  background-repeat: repeat-x;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.dropdown-click:hover {
+  cursor: pointer;
+}
+
+.goTo {
+  display: block;
+}
+
+.backdrop {
+    position: relative;
+    box-sizing: border-box;
+    height: 100vh;
+    position: relative;
+    perspective-origin: 628.5px 158px;
+    transform-origin: 628.5px 158px;
+    background: rgba(0, 0, 0, 0) url(/assets/monkey.jpg) repeat scroll 0% 0% / cover padding-box border-box;
+    background-size: cover;
+    font: normal normal normal normal 9px / normal 'Open Sans', Helvetica, Arial, sans-serif;
+    overflow: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgba(146, 135, 187, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+  transform: scale(1);
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-field {
+  background-color: white;
+  text-align: center;
+}
+
+.login-button {
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  margin: 5rem 0 2.2rem;
+  width: 100%;
+  height: 4rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: #FF3366;
+}
+
+.login-header {
+  text-align: center;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:200,300,400,700);
+* {
+	box-sizing: border-box
+}
+
+.backdrop {
+  margin: 0;
+  background: rgba(0, 0, 0, 0) url(/assets/monkey.jpg) repeat scroll 0% 0% / cover padding-box border-box;
+}
+.container-frontpage {
+	width: 30%;
+	margin: 0 auto;
+}
+
+.form {
+	width: 100%;
+	font-family: Roboto;
+	position: relative;
+	transition: top 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.form>fieldset>legend {
+	color: #fafafa;
+	font-size: 36px;
+	text-align:center;
+}
+.form .form-group {
+	display: block;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  text-align: center;
+}
+.form>fieldset {
+	max-width: 100%;
+}
+.form>fieldset, .form .form-group>input {
+	border: none;
+}
+.form .form-group>input, .form .form-group>label {
+	display: block;
+}
+.form .form-group {
+	position: relative;
+	padding-top: 10px;
+	width: 100%;
+  text-align: center;
+}
+.form .form-group>.form-label {
+  	position: relative;
+	padding: 2px 10px;
+	color: rgba(255,255,255,0.6);
+	font-weight: 300;
+	transition: transform 0.2s ease-in-out;
+  text-align: center;
+}
+.form .form-group>.form-input {
+  	position: relative;
+	z-index: 5;
+	padding: 10px;
+	border-radius: 7px;
+	outline: none;
+	width: 100%;
+	background-color: rgba(255,255,255,0.2);
+	color: #fafafa;
+	transition: background-color 0.4s;
+}
+
+.form .form-group.form-slide-up>label {
+	top: 28px;
+}
+
+.form .form-group.form-slide-side>label {
+	position: absolute;
+	top: 15px;
+}
+
+.form .form-group>.form-input:focus {
+	background-color: rgba(255,255,255,0.4);
+}
+.form .form-group.form-slide-up {
+	padding-top: 0;
+}
+.form .form-submit {
+	border: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #2196F3;
+	color: #fafafa;
+	padding: 10px 11px;
+	border-radius: 7px;
+	font-family: Roboto;
+	font-weight: 200;
+	font-size: 16px;
+	cursor: pointer;
+  text-align: center;
+}
+
+@media (max-width: 726px) {
+	.container-frontpage {
+		width: 100%;
+	}
+}
+
+.character-block {
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  background-color: #ee2560;
+  height: 100px;
+  width: 100px;
+  border-radius: 15px;
+   -moz-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+  -moz-transition: background-color 300ms ease-in;
+  -webkit-transition: background-color 300ms ease-in;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0.5em;
+}
+
+.character-block div {
+  font-size: 2em;
+  font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+}
+
+.stat-header {
+  background-color: #00a1f1;
+  background-image: linear-gradient(to bottom, #0af, #0093dd);
+  background-repeat: repeat-x;
+  color: #fff;
+  padding: 7px 0px;
+}
+
+.stat-header span {
+  padding: 0px 10px;
+}

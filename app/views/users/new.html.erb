@@ -1,0 +1,22 @@
+<div class="backdrop">
+  <div class="container-frontpage">
+  	<form class="form" action="<%= users_url %>" method="post">
+      <%= auth_token_input %>
+  		<fieldset>
+  			<legend>Sign Up</legend>
+        <div class="flash-errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></div>
+  			<div class="form-group form-slide-side">
+  				<label for="email" class="form-label"></label>
+  				<input placeholder="Email" type="email" class="form-input" name="user[email]" />
+  			</div>
+  			<div class="form-group form-slide-side">
+  				<label for="password" class="form-label"></label>
+  				<input placeholder="Password" type="password" class="form-input" name="user[password]" />
+  			</div>
+  			<div class="form-group">
+  			  	<button type="submit" class="form-submit">Sign Up</button>
+  			</div>
+  		</fieldset>
+  	</form>
+  </div>
+</div>
