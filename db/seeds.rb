@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # encode(Encoding.find('ASCII'), encoding_options).
-require 'byebug'
 
 encoding_options = {
   :invalid           => :replace,  # Replace invalid byte sequences
