@@ -8,6 +8,7 @@ var hashHistory = ReactRouter.hashHistory;
 var LandingPage = require('./components/LandingPage');
 var LessonSession = require('./components/LessonSession');
 var ReviewSession = require('./components/ReviewSession');
+var SiteNavBar = require('./components/SiteNavBar');
 
 var App = React.createClass({
   getInitialState: function () {
@@ -25,6 +26,7 @@ var App = React.createClass({
   render: function(){
     return (
       <div>
+      <SiteNavBar></SiteNavBar>
         {this.props.children}
       </div>
     );
@@ -35,7 +37,7 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={LandingPage}>
     </IndexRoute>
-    <Route path="/current_lesson" component={LessonSession}>
+    <Route path="/current_lesson/:id" component={LessonSession}>
     </Route>
     <Route path="/review_session" component={ReviewSession}>
     </Route>

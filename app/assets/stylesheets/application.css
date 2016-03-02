@@ -569,3 +569,11 @@
 .stat-header span {
   padding: 0px 10px;
 }
+
+.container-navbar {
+  margin: 0px;
+}
+
+a.navbar-brand {
+  padding-bottom: 5px;
+}

@@ -17,7 +17,7 @@ var ReviewPrompt = React.createClass({
   nextWithEnter: function (e) {
     var key = e.which || e.keyCode;
     if (key === 13 && this.state.feedback === "INCORRECT" && this.revealed) {
-      this.nextCharacter();
+      this.resetStatusAndIncrement();
     }
   },
 

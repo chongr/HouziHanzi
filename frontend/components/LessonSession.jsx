@@ -47,7 +47,7 @@ var LessonSession = React.createClass({
 
   componentDidMount: function() {
     this.listener = LessonCharactersStore.addListener(this.currentLesson);
-    CharacterUtils.fetchCurrentLesson();
+    CharacterUtils.fetchLesson(this.props.params.id);
   },
 
   componentWillUnmount: function () {

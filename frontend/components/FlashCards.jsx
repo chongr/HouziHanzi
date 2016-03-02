@@ -9,15 +9,26 @@ var FlashCards = React.createClass({
     var key = e.which || e.keyCode;
     if (key === 13) {
       this.nextCharacter();
+    } 
+  },
+
+  changeWithArrows: function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 39) {
+      this.nextCharacter();
+    } else if (key === 37) {
+      this.prevCharacter();
     }
   },
 
   componentDidMount: function () {
     document.addEventListener("keypress", this.nextWithEnter);
+    document.addEventListener("keydown", this.changeWithArrows);
   },
 
   componentWillUnmount: function () {
     document.removeEventListener("keypress", this.nextWithEnter);
+    document.removeEventListener("keydown", this.changeWithArrows);
   },
 
   nextCharacter: function () {

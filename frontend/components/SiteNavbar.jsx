@@ -3,10 +3,6 @@ var CharacterUtils = require('../util/CharacterUtils');
 var SessionUtils = require('../util/SessionUtils');
 var SessionStore = require('../stores/SessionStore');
 var hashHistory = require('react-router').hashHistory;
-var AllStudiedDropdown = require('./AllStudiedDropdown');
-var LastReviewedDropdown = require('./LastReviewedDropdown.jsx');
-var ReviewStatsDropdown = require('./ReviewStatsDropdown');
-var SiteNavBar = require('./SiteNavBar');
 var Navbar = require('react-bootstrap').Navbar;
 var Nav = require('react-bootstrap').Nav;
 var NavItem = require('react-bootstrap').NavItem;
@@ -59,11 +55,31 @@ var LandingPage = React.createClass({
     });
 
     return (
-      <div className="landing-page">
-        <LastReviewedDropdown></LastReviewedDropdown>
-        <ReviewStatsDropdown></ReviewStatsDropdown>
-        <AllStudiedDropdown></AllStudiedDropdown>
-      </div>
+        <Navbar className="container-navbar" inverse>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#"><i className="fa fa-home"></i></a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav className="left-nav">
+              <NavItem eventKey={1} onClick={this.goToCurrentLesson}>Current Lesson</NavItem>
+              <NavItem eventKey={2} onClick={this.goToReviewSession}>Review Session</NavItem>
+              <NavDropdown eventKey={3} title="Lessons" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>HSK Level 1</MenuItem>
+                <MenuItem eventKey={3.2} data-num='1' onClick={this.goToLesson}>1</MenuItem>
+                <MenuItem eventKey={3.3}>2</MenuItem>
+                <MenuItem eventKey={3.3}>3</MenuItem>
+                <MenuItem divider />
+              </NavDropdown>
+            </Nav>
+            <Nav className="right-nav" pullRight>
+              <NavItem eventKey={1}>{this.state.currentUser.email}</NavItem>
+              <NavItem eventKey={2} onClick={this.logoutUser}>Logout</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
     );
   }
 
