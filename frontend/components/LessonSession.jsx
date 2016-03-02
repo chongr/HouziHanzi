@@ -38,7 +38,7 @@ var LessonSession = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    var newLessonNum = nextProps.params.id;
+    var newLessonNum = nextProps.lessonId;
     CharacterUtils.fetchLesson(newLessonNum);
   },
 
@@ -52,7 +52,7 @@ var LessonSession = React.createClass({
 
   componentDidMount: function() {
     this.listener = LessonCharactersStore.addListener(this.currentLesson);
-    CharacterUtils.fetchLesson(this.props.params.id);
+    CharacterUtils.fetchLesson(this.props.lessonId);
   },
 
   componentWillUnmount: function () {

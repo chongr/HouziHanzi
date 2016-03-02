@@ -106,7 +106,7 @@ var App = React.createClass({
 var LessonSessionWrapper = React.createClass({
   render: function () {
     return (
-        <LessonSession clearJoyRide={App.prototype.clearJoyRide} startJoyRide={App.prototype.startJoyRide}
+        <LessonSession lessonId={this.props.params.id} clearJoyRide={App.prototype.clearJoyRide} startJoyRide={App.prototype.startJoyRide}
            addSteps={App.prototype._addSteps} addTooltip={App.prototype._addTooltip} />
     );
   }
