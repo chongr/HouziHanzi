@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require react-joyride
  */
  html, body, header, nav, h1, a,
  ul, li, strong, main, button, i,

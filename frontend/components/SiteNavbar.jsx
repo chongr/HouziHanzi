@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var CharacterUtils = require('../util/CharacterUtils');
 var SessionUtils = require('../util/SessionUtils');
 var SessionStore = require('../stores/SessionStore');
@@ -19,6 +20,57 @@ var LandingPage = React.createClass({
   componentDidMount: function () {
     this.listener = SessionStore.addListener(this.currentUser);
     SessionUtils.fetchCurrentUser();
+    this.props.addSteps([
+        {
+            title: 'Welcome!',
+            text: 'HouziHanzi is an application to help learn Chinese characters!' +
+            ' Each lesson has five characters, and after learning each character' +
+            ' it will be added to a pool of characters that may be reviewed in review sessions. ' +
+            'The home page keeps track of how well you remember the characters in the review sessions.'
+             + ' You may click the help button to restart the tour of this site.',
+            selector: ReactDOM.findDOMNode(this.refs.helpButton),
+            position: 'bottom',
+            type: 'hover'
+        },
+
+        {
+            title: 'Return to Home',
+            text: 'Use this button to return to this page.',
+            selector: ReactDOM.findDOMNode(this.refs.homeButton),
+            position: 'bottom',
+            type: 'hover'
+        },
+
+        {
+            title: 'Start the Current Lesson',
+            text: 'This button will start the next new lesson. In each lesson the characters are first displayed to study and then quizzed on.',
+            selector: ReactDOM.findDOMNode(this.refs.currentLessonButton),
+            position: 'bottom',
+            type: 'hover'
+        },
+
+        {
+            title: 'Start a Review Session',
+            text: 'This button will start a new review session. Statistics from these sessions are compiled on the home page',
+            selector: ReactDOM.findDOMNode(this.refs.reviewSessionButton),
+            position: 'bottom',
+            type: 'hover'
+        },
+
+        {
+            title: 'View a Previous Lesson',
+            text: 'Redo previous lessons with this dropdown menu.',
+            selector: ReactDOM.findDOMNode(this.refs.lessonButton),
+            position: 'bottom',
+            type: 'hover'
+        },
+
+    ]);
+    this.props.startJoyRide();
+  },
+
+  startTutorial: function () {
+    this.props.restartJoyRide();
   },
 
   componentWillUnmount: function () {
@@ -35,7 +87,7 @@ var LandingPage = React.createClass({
 
   goToLesson: function (e) {
     e.preventDefault();
-    var lessonNum = e.target.getAttribute("data-num")
+    var lessonNum = e.target.getAttribute("data-num");
     hashHistory.push("/current_lesson/" + lessonNum);
   },
 
@@ -78,22 +130,23 @@ var LandingPage = React.createClass({
     return (
         <Navbar className="container-navbar" inverse>
           <Navbar.Header>
-            <Navbar.Brand>
+            <Navbar.Brand ref="homeButton">
               <a href="#"><i className="fa fa-home"></i></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav className="left-nav">
-              <NavItem eventKey={1} onClick={this.goToCurrentLesson}>Current Lesson</NavItem>
-              <NavItem eventKey={2} onClick={this.goToReviewSession}>Review Session</NavItem>
-              <NavDropdown eventKey={3} title="Lessons" id="basic-nav-dropdown">
+              <NavItem ref="currentLessonButton" eventKey={1} onClick={this.goToCurrentLesson}>Current Lesson</NavItem>
+              <NavItem ref="reviewSessionButton" eventKey={2} onClick={this.goToReviewSession}>Review Session</NavItem>
+              <NavDropdown ref="lessonButton" eventKey={3} title="Lessons" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>HSK Level 1</MenuItem>
                 <MenuItem divider />
                   {listofRows}
               </NavDropdown>
             </Nav>
             <Nav className="right-nav" pullRight>
+              <NavItem eventKey={4} ref="helpButton" onClick={this.startTutorial}>Help</NavItem>
               <NavItem eventKey={1} onClick={this.goToHome}>{this.state.currentUser.email}</NavItem>
               <NavItem eventKey={2} onClick={this.logoutUser}>Logout</NavItem>
             </Nav>
