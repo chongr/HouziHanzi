@@ -9,7 +9,7 @@ var hashHistory = ReactRouter.hashHistory;
 var LandingPage = require('./components/LandingPage');
 var LessonSession = require('./components/LessonSession');
 var ReviewSession = require('./components/ReviewSession');
-var SiteNavBar = require('./components/SiteNavBar');
+var SiteNavBar = require('./components/SiteNavbar');
 
 var App = React.createClass({
   getInitialState: function () {

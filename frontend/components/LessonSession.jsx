@@ -66,7 +66,7 @@ var LessonSession = React.createClass({
 
   render: function() {
     if (this.state.mode === "FlashCards") {
-      this.mode = (<FlashCards lessonCharacters={this.state.lessonCharacters} flashCardsComplete={this.startLessonQuiz}></FlashCards>);
+      this.mode = (<FlashCards addTooltip={this.props.addTooltip} lessonCharacters={this.state.lessonCharacters} flashCardsComplete={this.startLessonQuiz}></FlashCards>);
     } else if (this.state.mode === "LessonQuiz") {
       this.mode = (<QuizPrompt nextLesson={this.nextLesson} quizCharacters={shuffle(this.state.lessonCharacters)}></QuizPrompt>);
     }
