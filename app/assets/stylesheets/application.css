@@ -556,6 +556,7 @@
 .character-block div {
   font-size: 2em;
   font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+  width: 100%;
 }
 
 .stat-header {
@@ -572,8 +573,21 @@
 
 .container-navbar {
   margin: 0px;
+  font-family: "Source Sans Pro",sans-serif;
 }
 
 a.navbar-brand {
-  padding-bottom: 5px;
+  padding-bottom: 0px;
+}
+
+ul.dropdown-menu{
+  padding-left: 5px;
+}
+
+div.row li {
+  text-align: center;
+}
+
+div.row li:hover {
+  background-color: grey;
 }

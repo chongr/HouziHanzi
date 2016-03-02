@@ -37,8 +37,13 @@ var LessonSession = React.createClass({
     return {lessonCharacters: [], mode: "FlashCards"};
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    var newLessonNum = nextProps.params.id;
+    CharacterUtils.fetchLesson(newLessonNum);
+  },
+
   currentLesson: function () {
-    this.setState({lessonCharacters: LessonCharactersStore.getCurrentLesson()});
+    this.setState({mode: "FlashCards", lessonCharacters: LessonCharactersStore.getCurrentLesson()});
   },
 
   startLessonQuiz: function () {

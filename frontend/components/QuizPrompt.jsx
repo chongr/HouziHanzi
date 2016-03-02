@@ -13,6 +13,10 @@ var QuizPrompt = React.createClass({
     SessionUtils.fetchCurrentUser();
   },
 
+  componentWillUnmount: function () {
+    SessionUtils.fetchCurrentUser();
+  },
+
   handleInput: function (e) {
     this.setState({response: e.target.value});
   },

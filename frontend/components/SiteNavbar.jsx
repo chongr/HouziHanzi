@@ -8,6 +8,8 @@ var Nav = require('react-bootstrap').Nav;
 var NavItem = require('react-bootstrap').NavItem;
 var MenuItem = require('react-bootstrap').MenuItem;
 var NavDropdown = require('react-bootstrap').NavDropdown;
+var Row = require('react-bootstrap').Row;
+var Col = require('react-bootstrap').Col;
 
 var LandingPage = React.createClass({
   getInitialState: function () {
@@ -41,6 +43,10 @@ var LandingPage = React.createClass({
     hashHistory.push("/review_session");
   },
 
+  goToHome: function () {
+    hashHistory.push("/");
+  },
+
   logoutUser: function () {
     SessionUtils.logoutCurrentUser();
     var store = window.location.host + "/users/new";
@@ -48,11 +54,26 @@ var LandingPage = React.createClass({
   },
 
   render: function() {
-    var rangeto31 = Array.apply(null, Array(32)).map(function (_, i) {return i;});
+    var lessonNum = this.state.currentUser.lesson_current || 1;
+    var rangeto31 = Array.apply(null, Array(lessonNum + 1)).map(function (_, i) {return i;});
     rangeto31.shift();
-    var allbuttons = rangeto31.map(function(num) {
-
+    var that = this;
+    var allButtons = rangeto31.map(function(num) {
+      return (<Col xs={1} sm={1} md={1} lg={1}><MenuItem eventKey={3 + (num * 0.1)} data-num={num} onClick={that.goToLesson}>{num}</MenuItem></Col>);
     });
+
+    var totalButtons = rangeto31.length;
+    var idx = 0;
+    var listofRows = [];
+    while (idx + 4 < totalButtons) {
+      listofRows.push(
+        <Row>{allButtons.slice(idx, idx + 4)}</Row>
+      );
+      idx = idx + 4;
+    }
+    listofRows.push(
+      <Row>{allButtons.slice(idx)}</Row>
+    );
 
     return (
         <Navbar className="container-navbar" inverse>
@@ -68,14 +89,12 @@ var LandingPage = React.createClass({
               <NavItem eventKey={2} onClick={this.goToReviewSession}>Review Session</NavItem>
               <NavDropdown eventKey={3} title="Lessons" id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>HSK Level 1</MenuItem>
-                <MenuItem eventKey={3.2} data-num='1' onClick={this.goToLesson}>1</MenuItem>
-                <MenuItem eventKey={3.3}>2</MenuItem>
-                <MenuItem eventKey={3.3}>3</MenuItem>
                 <MenuItem divider />
+                  {listofRows}
               </NavDropdown>
             </Nav>
             <Nav className="right-nav" pullRight>
-              <NavItem eventKey={1}>{this.state.currentUser.email}</NavItem>
+              <NavItem eventKey={1} onClick={this.goToHome}>{this.state.currentUser.email}</NavItem>
               <NavItem eventKey={2} onClick={this.logoutUser}>Logout</NavItem>
             </Nav>
           </Navbar.Collapse>
