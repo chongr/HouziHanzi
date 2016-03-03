@@ -4,7 +4,7 @@ class ReviewedCharactersController < ApplicationController
       @all_review_characters = Character.where("lesson_num < #{current_user.lesson_current}")
       render json: @all_review_characters
 
-    elsif params[:type] == "reviewstats"      
+    elsif params[:type] == "reviewstats"
       @characters_and_times_reviewed = Character.joins(:reviewed_characters).where("reviewed_characters.user_id = #{current_user.id}").group("characters.unicode_value").count
       @characters_and_times_correct = Character.joins(:reviewed_characters).where("reviewed_characters.user_id = #{current_user.id} AND reviewed_characters.response_correct = 't'").group("characters.unicode_value").count
       @characters_and_times_incorrect = Character.joins(:reviewed_characters).where("reviewed_characters.user_id = #{current_user.id} AND reviewed_characters.response_correct = 'f'").group("characters.unicode_value").count
@@ -14,10 +14,35 @@ class ReviewedCharactersController < ApplicationController
       render json: @summary_stats
 
     elsif params[:type] == "lastreview"
-      @last_session_correct = Character.joins(:reviewed_characters).where("reviewed_characters.user_id = #{current_user.id} AND reviewed_characters.response_correct = 't'").limit(10).group("characters.unicode_value").count
-      remaining = 10 - @last_session_correct.length
-      @last_session_incorrect = Character.joins(:reviewed_characters).where("reviewed_characters.user_id = #{current_user.id} AND reviewed_characters.response_correct = 'f'").limit(remaining).group("characters.unicode_value").count
-      render json: {correct: @last_session_correct.to_a, incorrect: @last_session_incorrect.to_a}
+      recentReviews = ActiveRecord::Base.connection.execute(<<-SQL)
+        SELECT
+        CHARACTERS.*, reviewed_characters.response_correct
+        FROM
+        CHARACTERS
+        INNER JOIN
+        reviewed_characters
+        ON
+        characters.id = reviewed_characters.character_id
+        WHERE
+        reviewed_characters.user_id = '1'
+        ORDER BY
+        reviewed_characters.created_at DESC
+        limit
+        10;
+      SQL
+
+      correct = []
+      incorrect = []
+      i = 0
+      while i < recentReviews.count
+        if recentReviews[i]['response_correct'] == "t"
+          correct.push(recentReviews[i])
+        else
+          incorrect.push(recentReviews[i])
+        end
+        i += 1
+      end
+      render json: {correct: correct, incorrect: incorrect}
 
     else
       render json: "bad type"

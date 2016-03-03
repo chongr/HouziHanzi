@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var FlashCards = React.createClass({
   getInitialState: function () {
@@ -9,7 +10,7 @@ var FlashCards = React.createClass({
     var key = e.which || e.keyCode;
     if (key === 13) {
       this.nextCharacter();
-    } 
+    }
   },
 
   changeWithArrows: function (e) {
@@ -24,6 +25,21 @@ var FlashCards = React.createClass({
   componentDidMount: function () {
     document.addEventListener("keypress", this.nextWithEnter);
     document.addEventListener("keydown", this.changeWithArrows);
+    // this.props.addTooltip({
+    //         title: 'Standalone Tooltips',
+    //         text: '<h2 style="margin-bottom: 10px; line-height: 1.6">Now you can open tooltips independently!</h2>And even style them one by one!',
+    //         selector: ReactDOM.findDOMNode(this.refs.pinyinInfo),
+    //         position: 'bottom',
+    //         event: 'hover',
+    //         style: {
+    //             backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    //             borderRadius: '0',
+    //             color: '#fff',
+    //             mainColor: '#ff67b4',
+    //             textAlign: 'center',
+    //             width: '29rem'
+    //         }
+    //     });
   },
 
   componentWillUnmount: function () {
@@ -76,7 +92,7 @@ var FlashCards = React.createClass({
               <div className="next arrowbutton" onClick={this.nextCharacter}></div>
               <div className="supplement-pinyin">
                 <div className="pinyin-container">
-                  <h2>Pinyin</h2>
+                  <h2 ref="pinyinInfo">Pinyin</h2>
                   <div className="pinyin">{currentLessonCharacter.pinyin}</div>
                   <h2>Other Meanings</h2>
                   <div className="other-meanings">{currentLessonCharacter.other_translations}</div>

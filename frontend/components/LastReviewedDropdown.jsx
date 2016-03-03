@@ -27,7 +27,7 @@ var LastReviewedDropdown = React.createClass({
   render: function() {
     if (this.state.lastReviewed) {
       var lastReviewedCorrect = this.state.lastReviewed.correct.map( function (char, idx) {
-        return <Col className="character-block" key={char[0] + idx} xs={1} md={1}><div>{char[0].decodeHTML()}</div></Col>;
+        return <div className="flip-container"><Col className="character-block flipper" key={char.unicode_value + idx} xs={1} md={1}><div className="front"><div className="character-display">{char.unicode_value.decodeHTML()}</div></div><div className="back">{char.main_translation}</div></Col></div>;
       });
       var totalCharacters = lastReviewedCorrect.length;
       var idx = 0;
@@ -43,7 +43,14 @@ var LastReviewedDropdown = React.createClass({
       );
 
       var lastReviewedIncorrect = this.state.lastReviewed.incorrect.map( function (char) {
-        return <Col className="character-block" key={char[0] + idx} xs={1} md={1}><div>{char[0].decodeHTML()}</div></Col>;
+        return (<div className="flip-container">
+          <Col className="character-block flipper" key={char.unicode_value + idx} xs={1} md={1}>
+            <div className="front">
+              <div className="character-display">{char.unicode_value.decodeHTML()}</div>
+            </div>
+            <div className="back">{char.main_translation}</div>
+          </Col>
+        </div>);
       });
       var totalCharacters = lastReviewedIncorrect.length;
       var idx = 0;
@@ -69,9 +76,7 @@ var LastReviewedDropdown = React.createClass({
             </Grid>
           <div className="stat-header"><span>Incorrect</span></div>
             <Grid>
-              <Row>
                 {listofRowsIncorrect}
-              </Row>
             </Grid>
         </Panel>
       </div>

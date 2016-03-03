@@ -66,7 +66,6 @@ var LandingPage = React.createClass({
         },
 
     ]);
-    this.props.startJoyRide();
   },
 
   startTutorial: function () {
@@ -79,6 +78,7 @@ var LandingPage = React.createClass({
 
   currentUser: function () {
     this.setState({currentUser: SessionStore.getCurrentUser()});
+    this.props.startJoyRide();
   },
 
   goToCurrentLesson: function () {

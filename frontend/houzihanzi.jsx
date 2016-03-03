@@ -85,10 +85,6 @@ var App = React.createClass({
       this.setState(state);
   },
 
-  test: function () {
-    return "test";
-  },
-
   render: function(){
     return (
       <div>

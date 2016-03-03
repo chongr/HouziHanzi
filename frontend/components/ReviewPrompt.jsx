@@ -2,6 +2,7 @@ var React = require('react');
 var SessionStore = require('../stores/SessionStore');
 var SessionUtils = require('../util/SessionUtils');
 var ReviewUtils = require('../util/ReviewUtils');
+var hashHistory = require('react-router').hashHistory;
 window.ReviewUtils = ReviewUtils;
 
 var ReviewPrompt = React.createClass({
@@ -10,6 +11,7 @@ var ReviewPrompt = React.createClass({
   },
 
   resetStatusAndIncrement: function () {
+    this.revealed = false;
     this.setState({currentCharacterIdx: this.state.currentCharacterIdx + 1, response: "",
        feedback: "NONE", hiddenPinyin: true, hiddenMeaning: true, elgibleForReveal: false});
   },
@@ -34,6 +36,7 @@ var ReviewPrompt = React.createClass({
   nextCharacter: function () {
     if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
       //end review session
+      hashHistory.push("/");
     } else {
       this.resetStatusAndIncrement();
     }
@@ -62,12 +65,14 @@ var ReviewPrompt = React.createClass({
 
       if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
         //end review session
+        hashHistory.push("/");
       }
       this.resetStatusAndIncrement();
       return;
     } else if (this.state.feedback === "INCORRECT" && this.revealed) {
       if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
         //end review session
+        hashHistory.push("/");
       }
       this.resetStatusAndIncrement();
       return;

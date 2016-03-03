@@ -30,7 +30,7 @@ var LastReviewedDropdown = React.createClass({
       var correct = char[1].correct || 0;
       var percentage = Math.round(correct / total * 100);
       return (<Col className="character-block" xs={1} md={1}>
-      <div>{char[0].decodeHTML()}</div><div>{percentage + '%'}</div>
+      <div className="character-display">{char[0].decodeHTML()}</div><div className="character-display">{percentage + '%'}</div>
       </Col>);
     });
     var totalCharacters = listofReviews.length;
