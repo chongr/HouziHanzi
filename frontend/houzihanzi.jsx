@@ -134,7 +134,5 @@ document.addEventListener("DOMContentLoaded", function () {
       <Router history={hashHistory}>{routes}</Router>,
       document.getElementById('content')
     );
-  } else if (document.getElementById('entry-page')) {
-
-  }
+  } 
 });

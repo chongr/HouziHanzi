@@ -88,8 +88,8 @@ var FlashCards = React.createClass({
               <div className="supplement-options">Pinyin</div>
             </div>
             <div className="supplement-info">
-              <div className="back arrowbutton" onClick={this.prevCharacter}></div>
-              <div className="next arrowbutton" onClick={this.nextCharacter}></div>
+              <div className="previous-button arrowbutton" onClick={this.prevCharacter}></div>
+              <div className="next-button arrowbutton" onClick={this.nextCharacter}></div>
               <div className="supplement-pinyin">
                 <div className="pinyin-container">
                   <h2 ref="pinyinInfo">Pinyin</h2>

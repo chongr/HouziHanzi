@@ -253,20 +253,24 @@
   background-color: #ECECE9;
 }
 
-.next {
+.next-button {
   right: 0;
+  padding-right: 0px;
 }
 
-.next::before {
+.next-button::before {
   content: "\F054";
+  font-size: 3.0em;
 }
 
-.back {
+.previous-button {
   left: 0;
+  padding-left: 0px;
 }
 
-.back::before {
+.previous-button::before {
   content: "\F053";
+  font-size: 3.0em;
 }
 
 .lesson h2 {
@@ -365,6 +369,7 @@
   color: #fff;
   text-align: center;
   font-size: 1.5em;
+  border-top: none;
 }
 
 .dropdown-click:hover {
@@ -376,8 +381,6 @@
 }
 
 .backdrop {
-    position: relative;
-    box-sizing: border-box;
     height: 100vh;
     position: relative;
     perspective-origin: 628.5px 158px;
@@ -389,10 +392,81 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+}
+
+.image-cropper {
+  left: 5px;
+  float: left;
+  display: inline-table;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.container-navbar .image-cropper {
+  margin: 3px;
+  left: 0px;
+  float: left;
+}
+
+.container-navbar .image-cropper:hover {
+  cursor: pointer;
+}
+
+.image-cropper img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+legend .subheader {
+  font-size: 0.8em;
+}
+
+.form-group .form-input {
+  font-size: 16px;
+}
+
+.flash-errors {
+  font-size: 1.7em;
+  color: red;
+  text-align: center;
+  font-family: Roboto;
+}
+
+.container-frontpage div > a{
+  color: #fff;
+}
+
+.pager li > a{
+  background-color: #2196F3;
+	color: #fafafa;
+  font-family: Roboto;
+  border: none;
+  padding: 9px 60px;
+  font-size: 16px;
+  margin-top: 7px;
+}
+
+.pager {
+  margin-top: 5px;
+}
+
+.encapsulate-frontpage {
+  position: relative;
+  box-sizing: border-box;
+  height: 84%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .login-container {
@@ -570,7 +644,7 @@
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
+	transition: 0.4s;
 	transform-style: preserve-3d;
 
 	position: relative;
@@ -578,6 +652,7 @@
 
 /* hide back of pane during swap */
 .front, .back {
+  transition: 0.0s;
 	backface-visibility: hidden;
   display: flex;
   align-items: center;
@@ -595,10 +670,12 @@
 	z-index: 2;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
+  transition: 0.0s;
 }
 
 /* back, initially hidden pane */
 .back {
+  transition: 0.0s;
 	transform: rotateY(180deg);
 }
 

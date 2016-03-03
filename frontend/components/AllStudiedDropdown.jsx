@@ -27,7 +27,7 @@ var AllStudiedDropdown = React.createClass({
 
   render: function() {
     var listofStudied = this.state.allStudied.map( function (char, idx) {
-      return <Col className="character-block" key={char.unicode_value + idx} xs={1} md={1}><div className="character-display">{char.unicode_value.decodeHTML()}</div></Col>;
+      return <div className="flip-container"><Col className="character-block flipper" key={char.unicode_value + idx} xs={1} md={1}><div className="front"><div className="character-display">{char.unicode_value.decodeHTML()}</div></div><div className="back">{char.main_translation}</div></Col></div>;
     });
     var totalCharacters = listofStudied.length;
     var idx = 0;

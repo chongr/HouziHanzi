@@ -69,6 +69,7 @@ var LandingPage = React.createClass({
   },
 
   startTutorial: function () {
+    this.props.stopJoyRide();
     this.props.restartJoyRide();
   },
 
@@ -130,9 +131,9 @@ var LandingPage = React.createClass({
     return (
         <Navbar className="container-navbar" inverse>
           <Navbar.Header>
-            <Navbar.Brand ref="homeButton">
-              <a href="#"><i className="fa fa-home"></i></a>
-            </Navbar.Brand>
+            <div ref="homeButton" className="image-cropper previous" onClick={this.goToHome}>
+              <img className="rounded" src="/assets/monkey-logo.jpg"/>
+            </div>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>

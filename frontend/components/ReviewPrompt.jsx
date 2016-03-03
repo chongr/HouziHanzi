@@ -172,7 +172,7 @@ var ReviewPrompt = React.createClass({
                 <div className="pinyin-container" hidden={this.state.hiddenMeaning}>
                   <h2>Meaning</h2>
                   <div className="other-meanings">{currentQuizCharacter.main_translation + ", " + currentQuizCharacter.other_translations}</div>
-                  <div className="next arrowbutton" onClick={this.nextCharacter}></div>
+                  <div className="next-button arrowbutton" onClick={this.nextCharacter}></div>
                 </div>
               </div>
             </div>
