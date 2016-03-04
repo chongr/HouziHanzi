@@ -14,7 +14,9 @@ class ReviewedCharactersController < ApplicationController
       render json: @summary_stats
 
     elsif params[:type] == "lastreview"
-      recentReviews = ActiveRecord::Base.connection.execute(<<-SQL)
+      conn = ActiveRecord::Base.connection
+
+        sql = <<-SQL
         SELECT
         CHARACTERS.*, reviewed_characters.response_correct
         FROM
@@ -31,6 +33,7 @@ class ReviewedCharactersController < ApplicationController
         10;
       SQL
 
+      recentReviews = conn.execute sql
       correct = []
       incorrect = []
       i = 0
