@@ -3,11 +3,42 @@ var SessionStore = require('../stores/SessionStore');
 var SessionUtils = require('../util/SessionUtils');
 var ReviewUtils = require('../util/ReviewUtils');
 var hashHistory = require('react-router').hashHistory;
+var Modal = require('react-bootstrap').Modal;
+var Button = require('react-bootstrap').Button;
 window.ReviewUtils = ReviewUtils;
+
+var MyLargeModal = React.createClass({
+  render: function () {
+    var correct = 0;
+    var incorrect = 0;
+    if (this.props.correct) {
+      correct = this.props.correct;
+    }
+    if (this.props.incorrect) {
+      incorrect = this.props.incorrect;
+    }
+    return (
+      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg">Good Work!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>You Have Completed a Review Session!</h4>
+          <p>You correctly answered {correct} characters</p>
+          <p>You incorrectly answered {incorrect} characters</p>
+          <p>Your score for this session is {Math.round((correct * 100) / (correct + incorrect))}%</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+});
 
 var ReviewPrompt = React.createClass({
   getInitialState: function () {
-    return {currentCharacterIdx: 0, response: "", feedback: "NONE", hiddenPinyin: true, hiddenMeaning: true, elgibleForReveal: false};
+    return {currentCharacterIdx: 0, response: "", feedback: "NONE", hiddenPinyin: true, hiddenMeaning: true, elgibleForReveal: false, lgShow: false};
   },
 
   resetStatusAndIncrement: function () {
@@ -35,6 +66,8 @@ var ReviewPrompt = React.createClass({
   },
 
   componentDidMount: function () {
+    this.correct = 0;
+    this.incorrect = 0;
     this.revealed = false;
     document.addEventListener("keypress", this.nextWithEnter);
   },
@@ -42,7 +75,8 @@ var ReviewPrompt = React.createClass({
   nextCharacter: function () {
     if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
       //end review session
-      hashHistory.push("/");
+      this.setState({lgShow: true});
+      debugger
     } else {
       this.resetStatusAndIncrement();
     }
@@ -101,15 +135,22 @@ var ReviewPrompt = React.createClass({
         return;
       }
       ReviewUtils.createReviewCharacter(currentCharacter, "true");
+      this.correct += 1;
       this.setState({feedback: "CORRECT"});
     } else {
       if (this.state.feedback === "INCORRECT") {
         return;
       }
       ReviewUtils.createReviewCharacter(currentCharacter, "false");
+      this.incorrect += 1;
       this.setState({feedback: "INCORRECT", elgibleForReveal: true});
     }
 
+  },
+
+  lgClose: function () {
+    this.setState({lgShow: false});
+    hashHistory.push("/");
   },
 
   render: function() {
@@ -140,6 +181,11 @@ var ReviewPrompt = React.createClass({
       revealStyle = {
         cursor: "not-allowed",
         opacity: 0.3
+      };
+    } else {
+      revealStyle = {
+        color: '#fff',
+        backgroundColor: '#ee2560'
       };
     }
 
@@ -181,6 +227,8 @@ var ReviewPrompt = React.createClass({
               </div>
             </div>
           </div>
+
+          <MyLargeModal correct={this.correct} incorrect={this.incorrect} show={this.state.lgShow} onHide={this.lgClose} />
         </div>
     );
   }
