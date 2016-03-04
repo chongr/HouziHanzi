@@ -40,7 +40,7 @@ var QuizPrompt = React.createClass({
         SessionUtils.updateCurrentUser();
         this.props.nextLesson(nextLessonNum);
       }
-      this.setState({currentCharacterIdx: this.state.currentCharacterIdx + 1, response: "", feedback: "NONE"});
+      this.setState({currentCharacterIdx: this.state.currentCharacterIdx + 1, response: "", feedback: "NONE", hiddenPinyin: true, hiddenMeaning: true});
       return;
     }
 
@@ -93,7 +93,6 @@ var QuizPrompt = React.createClass({
         transition: "background-color 1.5s ease"
       };
     }
-
     return (
         <div className="lesson">
           <div className="lesson-container">
@@ -105,8 +104,9 @@ var QuizPrompt = React.createClass({
             </header>
             <div className="supplement">
               <div className="response-box">
-                <form onSubmit={this.checkInput}>
+                <form className="response-field-container" onSubmit={this.checkInput}>
                   <input autoFocus className="response-field" style={inputStyle} onChange={this.handleInput} value={this.state.response}></input>
+                  <button type="submit" className="next-button arrowbutton"></button>
                 </form>
               </div>
               <div className="quiz-button-group">

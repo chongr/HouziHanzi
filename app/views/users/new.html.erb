@@ -4,7 +4,7 @@
       <div class="image-cropper previous" href="#">
         <img class="rounded" src="/assets/monkey-logo.jpg">
       </div>
-      <li class="next new-user-button"><a href="<%= new_session_url %>">Sign In</a></li>
+      <li class="next new-user-button"><a href="<%= new_session_url %>">Login</a></li>
     </ul>
   </nav>
   <div class="encapsulate-frontpage">
@@ -28,9 +28,12 @@
     			<div class="form-group">
     			  	<button type="submit" class="form-submit">Sign Up</button>
     			</div>
-          <div><a href="http://www.freepik.com/free-photos-vectors/background">logo designed by Freepik</a></div>
     		</fieldset>
-
+        <form class="form" action=" <%= guest_login_url %>" method="post">
+          <%= auth_token_input %>
+          <button type="submit" class="form-submit">Login as Guest</button>
+        </form>
+        <div><a href="http://www.freepik.com/free-photos-vectors/background">logo designed by Freepik</a></div>
     	</form>
     </div>
   </div>

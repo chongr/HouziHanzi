@@ -35,7 +35,7 @@ var LandingPage = React.createClass({
 
         {
             title: 'Return to Home',
-            text: 'Use this button to return to this page.',
+            text: 'Use this button to return to the home page.',
             selector: ReactDOM.findDOMNode(this.refs.homeButton),
             position: 'bottom',
             type: 'hover'
@@ -68,9 +68,10 @@ var LandingPage = React.createClass({
     ]);
   },
 
-  startTutorial: function () {
-    this.props.stopJoyRide();
+  startTutorial: function (e) {
+    e.preventDefault();
     this.props.restartJoyRide();
+    this.props.startJoyRide();
   },
 
   componentWillUnmount: function () {
@@ -79,28 +80,33 @@ var LandingPage = React.createClass({
 
   currentUser: function () {
     this.setState({currentUser: SessionStore.getCurrentUser()});
-    this.props.startJoyRide();
   },
 
   goToCurrentLesson: function () {
+    this.props.stopJoyRide();
     hashHistory.push("/current_lesson/" + this.state.currentUser.lesson_current);
   },
 
   goToLesson: function (e) {
     e.preventDefault();
     var lessonNum = e.target.getAttribute("data-num");
+    this.props.stopJoyRide();
     hashHistory.push("/current_lesson/" + lessonNum);
   },
 
-  goToReviewSession: function () {
+  goToReviewSession: function (e) {
+    e.preventDefault();
+    this.props.stopJoyRide();
     hashHistory.push("/review_session");
   },
 
-  goToHome: function () {
+  goToHome: function (e) {
+    e.preventDefault();
     hashHistory.push("/");
   },
 
-  logoutUser: function () {
+  logoutUser: function (e) {
+    e.preventDefault();
     SessionUtils.logoutCurrentUser();
     var store = window.location.host + "/users/new";
     window.location.href = "http://" + window.location.host + "/session/new";

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
+  post '/guest_login', to: 'sessions#guest_login'
   get '/current_user', to: 'sessions#get_current_user'
   post '/users/update_lesson', to: 'users#update_lesson'
   get '/lessons/:num', to: 'characters#get_lesson'

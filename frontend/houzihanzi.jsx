@@ -30,7 +30,7 @@ var App = React.createClass({
   },
 
   restartJoyRide: function () {
-    this.refs.joyride.restart();
+    this.refs.joyride.reset();
   },
 
   clearJoyRide: function () {
@@ -92,7 +92,7 @@ var App = React.createClass({
          type={this.state.joyrideType} showSkipButton={true}
          showOverlay={this.state.joyrideOverlay} stepCallback={this._stepCallback}
          completeCallback={this._completeCallback} />
-       <SiteNavBar restartJoyRide={this.restartJoyRide} stopJoyRide={this.stopJoyRide} startJoyRide={this.startJoyRide} addSteps={this._addSteps} addTooltip={this._addTooltip}></SiteNavBar>
+       <SiteNavBar clearJoyRide={this.clearJoyRide} restartJoyRide={this.restartJoyRide} stopJoyRide={this.stopJoyRide} startJoyRide={this.startJoyRide} addSteps={this._addSteps} addTooltip={this._addTooltip}></SiteNavBar>
         {this.props.children}
       </div>
     );
@@ -134,5 +134,5 @@ document.addEventListener("DOMContentLoaded", function () {
       <Router history={hashHistory}>{routes}</Router>,
       document.getElementById('content')
     );
-  } 
+  }
 });

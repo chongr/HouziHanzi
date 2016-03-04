@@ -30,7 +30,8 @@
     			</div>
     		</fieldset>
     	</form>
-      <form class="form" action="http://google.com">
+      <form class="form" action=" <%= guest_login_url %>" method="post">
+        <%= auth_token_input %>
         <button type="submit" class="form-submit">Login as Guest</button>
       </form>
       <div><a href="http://www.freepik.com/free-photos-vectors/background">logo designed by Freepik</a></div>

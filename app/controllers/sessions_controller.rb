@@ -27,4 +27,10 @@ class SessionsController < ApplicationController
     @current_user = current_user
     render "get_current_user.json"
   end
+
+  def guest_login
+    guest = User.find_by_credentials('example@example.com', 'password')
+    sign_in(guest)
+    redirect_to user_url(guest)
+  end
 end

@@ -18,8 +18,15 @@ var ReviewPrompt = React.createClass({
 
   nextWithEnter: function (e) {
     var key = e.which || e.keyCode;
-    if (key === 13 && this.state.feedback === "INCORRECT" && this.revealed) {
-      this.resetStatusAndIncrement();
+    if ((key === 13 && this.state.feedback === "INCORRECT" && this.revealed) || this.state.feedback === "CORRECT") {
+      this.nextCharacter();
+    }
+  },
+
+  proceedWithClick: function (e) {
+    e.preventDefault();
+    if ((this.state.feedback === "INCORRECT" && this.revealed) || this.state.feedback === "CORRECT") {
+      this.nextCharacter();
     }
   },
 
@@ -30,7 +37,6 @@ var ReviewPrompt = React.createClass({
   componentDidMount: function () {
     this.revealed = false;
     document.addEventListener("keypress", this.nextWithEnter);
-    SessionUtils.fetchCurrentUser();
   },
 
   nextCharacter: function () {
@@ -43,6 +49,7 @@ var ReviewPrompt = React.createClass({
   },
 
   handleInput: function (e) {
+    e.preventDefault();
     this.setState({response: e.target.value});
   },
 
@@ -62,19 +69,10 @@ var ReviewPrompt = React.createClass({
   checkInput: function (e) {
     e.preventDefault();
     if (this.state.feedback === "CORRECT") {
-
-      if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
-        //end review session
-        hashHistory.push("/");
-      }
-      this.resetStatusAndIncrement();
       return;
     } else if (this.state.feedback === "INCORRECT" && this.revealed) {
-      if (this.state.currentCharacterIdx + 1 >= this.props.quizCharacters.length) {
-        //end review session
-        hashHistory.push("/");
-      }
-      this.resetStatusAndIncrement();
+      return;
+    } else if (this.state.response === "") {
       return;
     }
 
@@ -145,6 +143,11 @@ var ReviewPrompt = React.createClass({
       };
     }
 
+    var elgibleForClick = function (){};
+    if (this.state.feedback !== "NONE") {
+      elgibleForClick = this.proceedWithClick;
+    }
+
     return (
         <div className="lesson">
           <div className="lesson-container">
@@ -156,8 +159,9 @@ var ReviewPrompt = React.createClass({
             </header>
             <div className="supplement">
               <div className="response-box">
-                <form onSubmit={this.checkInput}>
+                <form className="response-field-container" onSubmit={this.checkInput}>
                   <input autoFocus className="response-field" style={inputStyle} onChange={this.handleInput} value={this.state.response}></input>
+                  <button type="submit" className="next-button arrowbutton" onClick={elgibleForClick}></button>
                 </form>
               </div>
               <div className="quiz-button-group">
