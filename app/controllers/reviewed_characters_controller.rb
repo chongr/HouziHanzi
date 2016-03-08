@@ -26,7 +26,7 @@ class ReviewedCharactersController < ApplicationController
         ON
         characters.id = reviewed_characters.character_id
         WHERE
-        reviewed_characters.user_id = '1'
+        reviewed_characters.user_id = #{current_user.id}
         ORDER BY
         reviewed_characters.created_at DESC
         limit

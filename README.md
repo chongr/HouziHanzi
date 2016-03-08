@@ -2,11 +2,11 @@
 
 [Heroku link][heroku] **--Remember to Add Once Setup--**
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://www.houzihanzi.herokuapp.com
 
 ## Minimum Viable Product
 
-HouziHanzi is a web application inspired by WaniKani built using Ruby on Rails
+HouziHanzi is a web application built using Ruby on Rails
 and React.js. HouziHanzi allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
