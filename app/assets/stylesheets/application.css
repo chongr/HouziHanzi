@@ -646,16 +646,20 @@ legend .subheader {
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
+    -webkit-transform: rotateY(180deg) translateZ(0);
 		transform: rotateY(180deg) translateZ(0);
 	}
 
 /* flip speed goes here */
 .flipper {
+  -webkit-transition: 0.4s;
 	transition: 0.4s;
+  -webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 
 	position: relative;
 
+  -webkit-transform: rotateY(0deg) translateZ(0);
   transform: rotateY(0deg) translateZ(0);
 }
 
@@ -678,13 +682,17 @@ legend .subheader {
 .front {
 	z-index: 2;
 	/* for firefox 31 */
+  -webkit-transform: rotateY(0deg) translateZ(0);
 	transform: rotateY(0deg) translateZ(0);
+  -webkit-transition: 0.0s;
   transition: 0.0s;
 }
 
 /* back, initially hidden pane */
 .back {
+  -webkit-transition: 0.0s;
   transition: 0.0s;
+  -webkit-transform: rotateY(180deg) translateZ(0);
 	transform: rotateY(180deg) translateZ(0);
 }
 
