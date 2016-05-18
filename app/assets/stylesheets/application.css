@@ -401,7 +401,6 @@
 .image-cropper {
   left: 5px;
   float: left;
-  display: inline-table;
   width: 50px;
   height: 50px;
   position: relative;
@@ -643,11 +642,11 @@ legend .subheader {
 }
 
 .flip-container {
-	perspective: 1000;
+	perspective: 500px;
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
-		transform: rotateY(180deg);
+		transform: rotateY(180deg) translateZ(0);
 	}
 
 /* flip speed goes here */
@@ -657,7 +656,7 @@ legend .subheader {
 
 	position: relative;
 
-  transform: rotateY(0deg);
+  transform: rotateY(0deg) translateZ(0);
 }
 
 /* hide back of pane during swap */
@@ -679,14 +678,14 @@ legend .subheader {
 .front {
 	z-index: 2;
 	/* for firefox 31 */
-	transform: rotateY(0deg);
+	transform: rotateY(0deg) translateZ(0);
   transition: 0.0s;
 }
 
 /* back, initially hidden pane */
 .back {
   transition: 0.0s;
-	transform: rotateY(180deg);
+	transform: rotateY(180deg) translateZ(0);
 }
 
 .back:before {
