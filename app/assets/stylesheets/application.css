@@ -389,7 +389,7 @@
     position: relative;
     perspective-origin: 628.5px 158px;
     transform-origin: 628.5px 158px;
-    background: rgba(0, 0, 0, 0) url(/assets/monkey.jpg) repeat scroll 0% 0% / cover padding-box border-box;
+    background: rgba(0, 0, 0, 0) url(http://res.cloudinary.com/daon8xyhn/image/upload/v1512093842/monkey_xpom2l.jpg) repeat scroll 0% 0% / cover padding-box border-box;
     background-size: cover;
     font: normal normal normal normal 9px / normal 'Open Sans', Helvetica, Arial, sans-serif;
     overflow: auto;
